@@ -66,6 +66,11 @@
             border-radius: 4px;
             background-color: #f0f0f0;
         }
+        .error-message {
+            color: red;
+            margin-top: 5px;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
@@ -73,19 +78,19 @@
         <h1>Crop Prediction</h1>
         <form id="prediction-form" action="{{ url_for('getprediction') }}" method="post">
             <label for="N">N (Nitrogen):</label>
-            <input type="text" id="N" name="N" required>
+            <input type="text" id="N" name="N" required pattern="\d+(\.\d+)?" title="Please enter a valid number between 0 and 140" max="140">
             <label for="P">P (Phosphorus):</label>
-            <input type="text" id="P" name="P" required>
+            <input type="text" id="P" name="P" required pattern="\d+(\.\d+)?" title="Please enter a valid number between 5 and 145" max="145">
             <label for="K">K (Potassium):</label>
-            <input type="text" id="K" name="K" required>
+            <input type="text" id="K" name="K" required pattern="\d+(\.\d+)?" title="Please enter a valid number between 5 and 205" max="205">
             <label for="temperature">Temperature:</label>
-            <input type="text" id="temperature" name="temperature" required>
+            <input type="text" id="temperature" name="temperature" required pattern="\d+(\.\d+)?" title="Please enter a valid number between 8.825675 and 43.675493" max="43.675493">
             <label for="humidity">Humidity:</label>
-            <input type="text" id="humidity" name="humidity" required>
+            <input type="text" id="humidity" name="humidity" required pattern="\d+(\.\d+)?" title="Please enter a valid number between 14.258040 and 99.981876" max="99.981876">
             <label for="ph">pH:</label>
-            <input type="text" id="ph" name="ph" required>
+            <input type="text" id="ph" name="ph" required pattern="\d+(\.\d+)?" title="Please enter a valid number between 3.504752 and 9.935091" max="9.935091">
             <label for="rainfall">Rainfall:</label>
-            <input type="text" id="rainfall" name="rainfall" required>
+            <input type="text" id="rainfall" name="rainfall" required pattern="\d+(\.\d+)?" title="Please enter a valid number between 20.211267 and 298.560117" max="298.560117">
             <button type="submit">Predict Crop</button>
         </form>
         <div id="output">{{ output }}</div>
